@@ -412,7 +412,7 @@ export default class MeasureTool {
         let p2 = this._projectionUtility.latLngToSvgPoint(d[1]);
         return Helper.transformText(p1, p2);
       })
-      .text((d, i) => this._helper.formatLength(this._helper.computeLengthBetween(d[0], d[1])));
+      .text((d, i) => this._helper.formatLength(this._helper.computeLengthBetween(d[0], d[1])) + ' - ' + this._helper.computeHeadingBetween(d[0], d[1]) );
 
     text.enter()
       .append('text')
@@ -424,7 +424,7 @@ export default class MeasureTool {
         let p2 = this._projectionUtility.latLngToSvgPoint(d[1]);
         return Helper.transformText(p1, p2);
       })
-      .text((d, i) => this._helper.formatLength(this._helper.computeLengthBetween(d[0], d[1])));
+      .text((d, i) => this._helper.formatLength(this._helper.computeLengthBetween(d[0], d[1])) + ' - ' + this._helper.computeHeadingBetween(d[0], d[1]) );
 
     text.exit().remove();
   }

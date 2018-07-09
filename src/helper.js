@@ -105,6 +105,29 @@ export default class Helper {
     ) * this._lengthMultiplier;
   }
 
+  /**
+   * Calculate the heading between two points.
+   * @param p1
+   * @param p2
+   * @return {*}
+   */
+  computeHeadingBetween(p1, p2) {
+
+    var heading = google.maps.geometry.spherical.computeHeading(
+      new google.maps.LatLng(p1[1], p1[0]),
+      new google.maps.LatLng(p2[1], p2[0])
+    );
+
+    if ( heading < 0 ) {
+      heading = 360 + heading;
+    }
+
+    heading = Math.round( heading * 10 ) / 10;
+
+    return heading + '°';
+
+  }
+
   computePathLength(points) {
     let sum = 0;
     for (let i = 1; i < points.length; i++) {
